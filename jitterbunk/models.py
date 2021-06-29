@@ -15,7 +15,7 @@ class User(models.Model):
 class Bunk(models.Model):
     from_user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="from_user")
     to_user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="to_user")
-    time = models.DateTimeField('time published of bunk')
+    time = models.DateTimeField('time published of bunk', auto_now_add=True, blank=True)
 
 
     def __str__(self):

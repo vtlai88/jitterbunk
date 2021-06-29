@@ -17,7 +17,7 @@
 <div id="body-div">
 	<h3 style="text-align: center">Who do you want to bunk?</h3>
 	<div style="text-align: center; line-height: 2em">
-		{% comment %} <form action="{% url 'jitterbunk:make' sender_id %}" method="POST"> {% endcomment %}
+		<form action="{% url 'jitterbunk:makeBunk' sender.id %}" method="POST"> 
 			{% csrf_token %}
 			{% for user in targets %}
 				<input type = "radio" name = "target" id = "target{{forloop.counter}}" value = "{{user.username}}"/>
