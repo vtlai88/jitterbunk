@@ -21,10 +21,6 @@ def index(request):
   
     return render(request, 'jitterbunk/index.html', context)
 
-
-
-
-
 def personalBunkFeed(request, user_id):
     #return HttpResponse("You are at the Personal Bunk Feed, which displays bunks for a specific user: %s" % username)
  
@@ -40,10 +36,6 @@ def personalBunkFeed(request, user_id):
     }
 
     return render(request, 'jitterbunk/personal.html', context)
-
-
-
-
 
 def makeBunk(request, user_id):
     if request.method == "GET":
@@ -61,4 +53,4 @@ def makeBunk(request, user_id):
         user = get_object_or_404(User,pk=user_id)
         myBunk = Bunk(from_user=user, to_user=(get_object_or_404(User,username=request.POST['target'])))
         myBunk.save()
-        return HttpResponseRedirect('../../')
+        return HttpResponseRedirect('/')
