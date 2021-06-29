@@ -1,0 +1,44 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'jitterbunk/index.css' %}" />
+
+
+<!DOCTYPE html>
+<html>
+<body>
+
+
+<p class="title"> create a bunk </p>
+
+<div style="text-align: center; text-transform: uppercase;"> 
+    <h2> Sender: {{username}} </h2>
+    <br>
+</div>
+
+<div id="body-div">
+	<h3 style="text-align: center">Who do you want to bunk?</h3>
+	<div style="text-align: center; line-height: 2em">
+		{% comment %} <form action="{% url 'jitterbunk:make' sender_id %}" method="POST"> {% endcomment %}
+			{% csrf_token %}
+			{% for user in targets %}
+				<input type = "radio" name = "target" id = "target{{forloop.counter}}" value = "{{user.username}}"/>
+				<label for = "user{{forloop.counter}}">
+					{{user.username}}
+				<br>
+			{% endfor %}
+            <br>
+			<input type="submit" name="submit" value="BUNK" id="submitButton">
+			
+		</form>
+	</div>
+
+</div>
+
+
+
+
+
+ 
+</body>
+</html> 
+
+

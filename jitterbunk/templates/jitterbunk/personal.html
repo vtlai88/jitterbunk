@@ -1,0 +1,32 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'jitterbunk/index.css' %}" />
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<p class="title"> {{username}}'s Bunk Feed </p>
+
+    <div class="photo" alt="user_photo">
+		<img src={{photo}}>
+	</div>
+    <br>
+    {% if bunks %}
+    <h2 style= "text-align: center;"> recent bunks involving {{username}} </h2>
+    <div class="container"> 
+        <ul>
+        {% for b in bunks %}
+            <li>{{ b.from_user }} bunked {{ b.to_user }} on {{ b.time }}</li>
+        {% endfor %}
+        </ul>
+    </div>
+    {% else %}
+    <div class="container"> 
+        <p>there are no currently no bunks :(</p>
+    </div> 
+    {% endif %}
+
+    <p style= "text-align: center;"> If you are {{username}}, <a href="/jitterbunk/makeBunk/{{user_id}}">click here</a> to create a bunk! :) </p>
+    
+</body>
+</html>

@@ -1,0 +1,47 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'jitterbunk/index.css' %}" />
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1 class=title>Welcome to Jitterbunk!</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<h2 style= "text-align: center;"> view a personal bunk page </h2>
+<div class="container">
+    {% comment %} LISTING ALL THE USERS {% endcomment %}
+    {% if users %}
+        <ul>
+        {% for user in users %}
+            <li><a href="/jitterbunk/{{user.id}}/">{{user.username}}</a></li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No users are available.</p>
+    {% endif %}
+</div>
+
+
+<h2 style= "text-align: center;"> recent bunks </h2>
+<div class="container">
+    {% comment %} LISTING ALL THE BUNKS {% endcomment %}
+    {% if bunks %}
+        <ul>
+        {% for bunk in bunks %}
+            <li>{{bunk.from_user.username}} bunked {{bunk.to_user.username}} at {{bunk.time}} </a></li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No bunks are available.</p>
+    {% endif %}
+
+</div>
+</body>
+</html>
+
+
+
+
+
